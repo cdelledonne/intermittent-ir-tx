@@ -1,0 +1,1 @@
+"./main.obj" "./src/ir.obj" "./src/peripherals.obj" "../lnk_msp430fr5994.cmd" -llibmpu_init.a -llibmpu_init.a -llibmath.a -llibc.a 
