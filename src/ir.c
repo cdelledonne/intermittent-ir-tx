@@ -9,14 +9,16 @@
 #include "ir.h"
 
 
-void ir_init(uint8_t payload_len, uint16_t* burst_len, uint16_t* gap_len)
+void ir_init(uint8_t start_len, uint16_t* burst_len, uint16_t* gap_len)
 {
-    pl_len = payload_len;
-    bits_to_send = pl_len;
+    curr_pl_len_bytes = start_len;
+    if (curr_pl_len_bytes > MAX_PAYLOAD_BYTES) curr_pl_len_bytes = MAX_PAYLOAD_BYTES;
+    if (curr_pl_len_bytes < MIN_PAYLOAD_BYTES) curr_pl_len_bytes = MIN_PAYLOAD_BYTES;
+
     burst_len_addr = burst_len;
     gap_len_addr = gap_len;
 
-    curr_pl_len_bytes = 20;
+    bits_to_send = MIN_PAYLOAD_BITS;
 
     *burst_len_addr = START_BURST;
     *gap_len_addr = START_GAP;
@@ -68,7 +70,7 @@ message_state_t ir_tick()
     case M_STATE_DATA:
         bits_to_send--;
         if (bits_to_send == 0) {
-            bits_to_send = pl_len;
+            bits_to_send = MIN_PAYLOAD_BITS;
             payload_pt = 1;
             // *burst_len_addr = (payload & payload_pt) ? ZERO_BURST : ONE_BURST;
             // *gap_len_addr   = (payload & payload_pt) ? ZERO_GAP   : ONE_GAP;
@@ -87,7 +89,7 @@ message_state_t ir_tick()
     case M_STATE_INV_DATA:
         bits_to_send--;
         if (bits_to_send == 0) {
-            bits_to_send = pl_len;
+            bits_to_send = MIN_PAYLOAD_BITS;
             payload_pt = 1;
             *burst_len_addr = START_BURST;
             *gap_len_addr   = START_GAP;
@@ -113,13 +115,59 @@ message_state_t ir_tick()
 }
 */
 
+void ir_increment_pl_len()
+{
+    if (curr_pl_len_bytes == MAX_PAYLOAD_BYTES) return;
+
+    uint8_t pl_div_4 = curr_pl_len_bytes >> 2;
+    uint8_t i;
+
+    if (pl_div_4 & 0x01) {
+        pl_div_4 += 0x01;
+    }
+    else {
+        for (i = 0x02; i <= 0x10; i <<= 1) {
+            if (pl_div_4 & i) {
+                pl_div_4 += i >> 1;
+                break;
+            }
+        }
+    }
+
+    curr_pl_len_bytes = pl_div_4 << 2;
+}
+
+
+void ir_decrement_pl_len()
+{
+    if (curr_pl_len_bytes == MIN_PAYLOAD_BYTES) return;
+
+    uint8_t pl_div_4 = curr_pl_len_bytes >> 2;
+    uint8_t i;
+
+    if (pl_div_4 & 0x01) {
+        pl_div_4 -= 0x01;
+    }
+    else {
+        for (i = 0x02; i <= 0x20; i <<= 1) {
+            if (pl_div_4 & i) {
+                pl_div_4 -= i >> 1;
+                break;
+            }
+        }
+    }
+
+    curr_pl_len_bytes = pl_div_4 << 2;
+}
+
+
 message_state_t ir_tick()
 {
     static message_state_t state = M_STATE_START;
     static uint32_t payload_pt = 1;
     static uint8_t* internal_pl_addr;
 
-    uint16_t min_pl_len_bytes = (pl_len_bytes < curr_pl_len_bytes) ? pl_len_bytes : curr_pl_len_bytes;
+    uint8_t min_pl_len_bytes = (pl_len_bytes < curr_pl_len_bytes) ? pl_len_bytes : curr_pl_len_bytes;
 
     switch (state) {
 
@@ -135,7 +183,7 @@ message_state_t ir_tick()
     case M_STATE_DATA:
         bits_to_send--;
         if (bits_to_send == 0) {
-            bits_to_send = pl_len;
+            bits_to_send = MIN_PAYLOAD_BITS;
             payload_pt = 1;
             // *burst_len_addr = (payload & payload_pt) ? ZERO_BURST : ONE_BURST;
             // *gap_len_addr   = (payload & payload_pt) ? ZERO_GAP   : ONE_GAP;
@@ -164,7 +212,7 @@ message_state_t ir_tick()
     case M_STATE_INV_DATA:
         bits_to_send--;
         if (bits_to_send == 0) {
-            bits_to_send = pl_len;
+            bits_to_send = MIN_PAYLOAD_BITS;
             payload_pt = 1;
             *burst_len_addr = START_BURST;
             *gap_len_addr   = START_GAP;

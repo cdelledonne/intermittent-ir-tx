@@ -9,6 +9,7 @@ GEN_CMDS__FLAG :=
 
 ORDERED_OBJS += \
 "./main.obj" \
+"./src/interpow.obj" \
 "./src/ir.obj" \
 "./src/peripherals.obj" \
 "../lnk_msp430fr5994.cmd" \
@@ -158,8 +159,8 @@ ir_tx.txt: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "src/ir.obj" "src/peripherals.obj" 
-	-$(RM) "main.d" "src/ir.d" "src/peripherals.d" 
+	-$(RM) "main.obj" "src/interpow.obj" "src/ir.obj" "src/peripherals.obj" 
+	-$(RM) "main.d" "src/interpow.d" "src/ir.d" "src/peripherals.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
