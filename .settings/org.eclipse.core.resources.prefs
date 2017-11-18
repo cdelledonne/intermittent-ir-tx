@@ -1,4 +1,16 @@
 eclipse.preferences.version=1
+encoding//Debug/dsplib/src/filter/subdir_rules.mk=UTF-8
+encoding//Debug/dsplib/src/filter/subdir_vars.mk=UTF-8
+encoding//Debug/dsplib/src/lea/subdir_rules.mk=UTF-8
+encoding//Debug/dsplib/src/lea/subdir_vars.mk=UTF-8
+encoding//Debug/dsplib/src/matrix/subdir_rules.mk=UTF-8
+encoding//Debug/dsplib/src/matrix/subdir_vars.mk=UTF-8
+encoding//Debug/dsplib/src/transform/subdir_rules.mk=UTF-8
+encoding//Debug/dsplib/src/transform/subdir_vars.mk=UTF-8
+encoding//Debug/dsplib/src/utility/subdir_rules.mk=UTF-8
+encoding//Debug/dsplib/src/utility/subdir_vars.mk=UTF-8
+encoding//Debug/dsplib/src/vector/subdir_rules.mk=UTF-8
+encoding//Debug/dsplib/src/vector/subdir_vars.mk=UTF-8
 encoding//Debug/makefile=UTF-8
 encoding//Debug/objects.mk=UTF-8
 encoding//Debug/sources.mk=UTF-8

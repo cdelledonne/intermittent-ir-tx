@@ -8,7 +8,113 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
-"./main.obj" \
+"./main_taskified.obj" \
+"./dsplib/src/filter/msp_biquad_cascade_df1_q15.obj" \
+"./dsplib/src/filter/msp_biquad_cascade_df2_ext_q15.obj" \
+"./dsplib/src/filter/msp_biquad_cascade_df2_q15.obj" \
+"./dsplib/src/filter/msp_biquad_df1_q15.obj" \
+"./dsplib/src/filter/msp_biquad_df2_ext_q15.obj" \
+"./dsplib/src/filter/msp_biquad_df2_q15.obj" \
+"./dsplib/src/filter/msp_cmplx_fir_iq31.obj" \
+"./dsplib/src/filter/msp_cmplx_fir_q15.obj" \
+"./dsplib/src/filter/msp_fir_iq31.obj" \
+"./dsplib/src/filter/msp_fir_q15.obj" \
+"./dsplib/src/lea/msp_lea_flags.obj" \
+"./dsplib/src/lea/msp_lea_init.obj" \
+"./dsplib/src/lea/msp_lea_isr.obj" \
+"./dsplib/src/lea/msp_lea_patch.obj" \
+"./dsplib/src/matrix/msp_matrix_abs_iq31.obj" \
+"./dsplib/src/matrix/msp_matrix_abs_q15.obj" \
+"./dsplib/src/matrix/msp_matrix_add_iq31.obj" \
+"./dsplib/src/matrix/msp_matrix_add_q15.obj" \
+"./dsplib/src/matrix/msp_matrix_mpy_iq31.obj" \
+"./dsplib/src/matrix/msp_matrix_mpy_q15.obj" \
+"./dsplib/src/matrix/msp_matrix_neg_iq31.obj" \
+"./dsplib/src/matrix/msp_matrix_neg_q15.obj" \
+"./dsplib/src/matrix/msp_matrix_offset_iq31.obj" \
+"./dsplib/src/matrix/msp_matrix_offset_q15.obj" \
+"./dsplib/src/matrix/msp_matrix_scale_iq31.obj" \
+"./dsplib/src/matrix/msp_matrix_scale_q15.obj" \
+"./dsplib/src/matrix/msp_matrix_shift_iq31.obj" \
+"./dsplib/src/matrix/msp_matrix_shift_q15.obj" \
+"./dsplib/src/matrix/msp_matrix_sub_iq31.obj" \
+"./dsplib/src/matrix/msp_matrix_sub_q15.obj" \
+"./dsplib/src/matrix/msp_matrix_trans_iq31.obj" \
+"./dsplib/src/matrix/msp_matrix_trans_q15.obj" \
+"./dsplib/src/transform/msp_cmplx_bitrev_iq31.obj" \
+"./dsplib/src/transform/msp_cmplx_bitrev_q15.obj" \
+"./dsplib/src/transform/msp_cmplx_fft_auto_q15.obj" \
+"./dsplib/src/transform/msp_cmplx_fft_fixed_q15.obj" \
+"./dsplib/src/transform/msp_cmplx_fft_iq31.obj" \
+"./dsplib/src/transform/msp_cmplx_ifft_auto_q15.obj" \
+"./dsplib/src/transform/msp_cmplx_ifft_fixed_q15.obj" \
+"./dsplib/src/transform/msp_cmplx_ifft_iq31.obj" \
+"./dsplib/src/transform/msp_fft_auto_q15.obj" \
+"./dsplib/src/transform/msp_fft_fixed_q15.obj" \
+"./dsplib/src/transform/msp_fft_iq31.obj" \
+"./dsplib/src/transform/msp_ifft_auto_q15.obj" \
+"./dsplib/src/transform/msp_ifft_fixed_q15.obj" \
+"./dsplib/src/transform/msp_ifft_iq31.obj" \
+"./dsplib/src/transform/msp_split_iq31.obj" \
+"./dsplib/src/transform/msp_split_q15.obj" \
+"./dsplib/src/transform/msp_transform_tables.obj" \
+"./dsplib/src/utility/msp_cmplx_fill_iq31.obj" \
+"./dsplib/src/utility/msp_cmplx_fill_q15.obj" \
+"./dsplib/src/utility/msp_cmplx_iq31.obj" \
+"./dsplib/src/utility/msp_cmplx_q15.obj" \
+"./dsplib/src/utility/msp_copy_iq31.obj" \
+"./dsplib/src/utility/msp_copy_q15.obj" \
+"./dsplib/src/utility/msp_deinterleave_iq31.obj" \
+"./dsplib/src/utility/msp_deinterleave_q15.obj" \
+"./dsplib/src/utility/msp_fill_iq31.obj" \
+"./dsplib/src/utility/msp_fill_q15.obj" \
+"./dsplib/src/utility/msp_interleave_iq31.obj" \
+"./dsplib/src/utility/msp_interleave_q15.obj" \
+"./dsplib/src/utility/msp_iq31_to_q15.obj" \
+"./dsplib/src/utility/msp_q15_to_iq31.obj" \
+"./dsplib/src/utility/msp_sinusoid_q15.obj" \
+"./dsplib/src/vector/msp_abs_iq31.obj" \
+"./dsplib/src/vector/msp_abs_q15.obj" \
+"./dsplib/src/vector/msp_add_iq31.obj" \
+"./dsplib/src/vector/msp_add_q15.obj" \
+"./dsplib/src/vector/msp_cmplx_add_iq31.obj" \
+"./dsplib/src/vector/msp_cmplx_add_q15.obj" \
+"./dsplib/src/vector/msp_cmplx_conj_iq31.obj" \
+"./dsplib/src/vector/msp_cmplx_conj_q15.obj" \
+"./dsplib/src/vector/msp_cmplx_mac_iq31.obj" \
+"./dsplib/src/vector/msp_cmplx_mac_q15.obj" \
+"./dsplib/src/vector/msp_cmplx_mpy_iq31.obj" \
+"./dsplib/src/vector/msp_cmplx_mpy_q15.obj" \
+"./dsplib/src/vector/msp_cmplx_mpy_real_iq31.obj" \
+"./dsplib/src/vector/msp_cmplx_mpy_real_q15.obj" \
+"./dsplib/src/vector/msp_cmplx_scale_iq31.obj" \
+"./dsplib/src/vector/msp_cmplx_scale_q15.obj" \
+"./dsplib/src/vector/msp_cmplx_shift_iq31.obj" \
+"./dsplib/src/vector/msp_cmplx_shift_q15.obj" \
+"./dsplib/src/vector/msp_cmplx_sub_iq31.obj" \
+"./dsplib/src/vector/msp_cmplx_sub_q15.obj" \
+"./dsplib/src/vector/msp_mac_iq31.obj" \
+"./dsplib/src/vector/msp_mac_q15.obj" \
+"./dsplib/src/vector/msp_max_iq31.obj" \
+"./dsplib/src/vector/msp_max_q15.obj" \
+"./dsplib/src/vector/msp_max_uq15.obj" \
+"./dsplib/src/vector/msp_max_uq31.obj" \
+"./dsplib/src/vector/msp_min_iq31.obj" \
+"./dsplib/src/vector/msp_min_q15.obj" \
+"./dsplib/src/vector/msp_min_uq15.obj" \
+"./dsplib/src/vector/msp_min_uq31.obj" \
+"./dsplib/src/vector/msp_mpy_iq31.obj" \
+"./dsplib/src/vector/msp_mpy_q15.obj" \
+"./dsplib/src/vector/msp_neg_iq31.obj" \
+"./dsplib/src/vector/msp_neg_q15.obj" \
+"./dsplib/src/vector/msp_offset_iq31.obj" \
+"./dsplib/src/vector/msp_offset_q15.obj" \
+"./dsplib/src/vector/msp_scale_iq31.obj" \
+"./dsplib/src/vector/msp_scale_q15.obj" \
+"./dsplib/src/vector/msp_shift_iq31.obj" \
+"./dsplib/src/vector/msp_shift_q15.obj" \
+"./dsplib/src/vector/msp_sub_iq31.obj" \
+"./dsplib/src/vector/msp_sub_q15.obj" \
 "./src/interpow.obj" \
 "./src/ir.obj" \
 "./src/peripherals.obj" \
@@ -27,8 +133,20 @@ RMDIR := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include dsplib/src/filter/subdir_vars.mk
+-include dsplib/src/lea/subdir_vars.mk
+-include dsplib/src/matrix/subdir_vars.mk
+-include dsplib/src/transform/subdir_vars.mk
+-include dsplib/src/utility/subdir_vars.mk
+-include dsplib/src/vector/subdir_vars.mk
 -include src/subdir_vars.mk
 -include subdir_rules.mk
+-include dsplib/src/filter/subdir_rules.mk
+-include dsplib/src/lea/subdir_rules.mk
+-include dsplib/src/matrix/subdir_rules.mk
+-include dsplib/src/transform/subdir_rules.mk
+-include dsplib/src/utility/subdir_rules.mk
+-include dsplib/src/vector/subdir_rules.mk
 -include src/subdir_rules.mk
 -include objects.mk
 
@@ -159,8 +277,16 @@ ir_tx.txt: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "src/interpow.obj" "src/ir.obj" "src/peripherals.obj" 
-	-$(RM) "main.d" "src/interpow.d" "src/ir.d" "src/peripherals.d" 
+	-$(RM) "main_taskified.obj" "dsplib/src/filter/msp_biquad_cascade_df1_q15.obj" "dsplib/src/filter/msp_biquad_cascade_df2_ext_q15.obj" "dsplib/src/filter/msp_biquad_cascade_df2_q15.obj" "dsplib/src/filter/msp_biquad_df1_q15.obj" "dsplib/src/filter/msp_biquad_df2_ext_q15.obj" "dsplib/src/filter/msp_biquad_df2_q15.obj" "dsplib/src/filter/msp_cmplx_fir_iq31.obj" "dsplib/src/filter/msp_cmplx_fir_q15.obj" "dsplib/src/filter/msp_fir_iq31.obj" "dsplib/src/filter/msp_fir_q15.obj" "dsplib/src/lea/msp_lea_flags.obj" "dsplib/src/lea/msp_lea_init.obj" "dsplib/src/lea/msp_lea_isr.obj" "dsplib/src/lea/msp_lea_patch.obj" "dsplib/src/matrix/msp_matrix_abs_iq31.obj" "dsplib/src/matrix/msp_matrix_abs_q15.obj" "dsplib/src/matrix/msp_matrix_add_iq31.obj" "dsplib/src/matrix/msp_matrix_add_q15.obj" "dsplib/src/matrix/msp_matrix_mpy_iq31.obj" "dsplib/src/matrix/msp_matrix_mpy_q15.obj" "dsplib/src/matrix/msp_matrix_neg_iq31.obj" "dsplib/src/matrix/msp_matrix_neg_q15.obj" "dsplib/src/matrix/msp_matrix_offset_iq31.obj" 
+	-$(RM) "dsplib/src/matrix/msp_matrix_offset_q15.obj" "dsplib/src/matrix/msp_matrix_scale_iq31.obj" "dsplib/src/matrix/msp_matrix_scale_q15.obj" "dsplib/src/matrix/msp_matrix_shift_iq31.obj" "dsplib/src/matrix/msp_matrix_shift_q15.obj" "dsplib/src/matrix/msp_matrix_sub_iq31.obj" "dsplib/src/matrix/msp_matrix_sub_q15.obj" "dsplib/src/matrix/msp_matrix_trans_iq31.obj" "dsplib/src/matrix/msp_matrix_trans_q15.obj" "dsplib/src/transform/msp_cmplx_bitrev_iq31.obj" "dsplib/src/transform/msp_cmplx_bitrev_q15.obj" "dsplib/src/transform/msp_cmplx_fft_auto_q15.obj" "dsplib/src/transform/msp_cmplx_fft_fixed_q15.obj" "dsplib/src/transform/msp_cmplx_fft_iq31.obj" "dsplib/src/transform/msp_cmplx_ifft_auto_q15.obj" "dsplib/src/transform/msp_cmplx_ifft_fixed_q15.obj" "dsplib/src/transform/msp_cmplx_ifft_iq31.obj" "dsplib/src/transform/msp_fft_auto_q15.obj" "dsplib/src/transform/msp_fft_fixed_q15.obj" "dsplib/src/transform/msp_fft_iq31.obj" "dsplib/src/transform/msp_ifft_auto_q15.obj" "dsplib/src/transform/msp_ifft_fixed_q15.obj" 
+	-$(RM) "dsplib/src/transform/msp_ifft_iq31.obj" "dsplib/src/transform/msp_split_iq31.obj" "dsplib/src/transform/msp_split_q15.obj" "dsplib/src/transform/msp_transform_tables.obj" "dsplib/src/utility/msp_cmplx_fill_iq31.obj" "dsplib/src/utility/msp_cmplx_fill_q15.obj" "dsplib/src/utility/msp_cmplx_iq31.obj" "dsplib/src/utility/msp_cmplx_q15.obj" "dsplib/src/utility/msp_copy_iq31.obj" "dsplib/src/utility/msp_copy_q15.obj" "dsplib/src/utility/msp_deinterleave_iq31.obj" "dsplib/src/utility/msp_deinterleave_q15.obj" "dsplib/src/utility/msp_fill_iq31.obj" "dsplib/src/utility/msp_fill_q15.obj" "dsplib/src/utility/msp_interleave_iq31.obj" "dsplib/src/utility/msp_interleave_q15.obj" "dsplib/src/utility/msp_iq31_to_q15.obj" "dsplib/src/utility/msp_q15_to_iq31.obj" "dsplib/src/utility/msp_sinusoid_q15.obj" "dsplib/src/vector/msp_abs_iq31.obj" "dsplib/src/vector/msp_abs_q15.obj" "dsplib/src/vector/msp_add_iq31.obj" "dsplib/src/vector/msp_add_q15.obj" "dsplib/src/vector/msp_cmplx_add_iq31.obj" "dsplib/src/vector/msp_cmplx_add_q15.obj" 
+	-$(RM) "dsplib/src/vector/msp_cmplx_conj_iq31.obj" "dsplib/src/vector/msp_cmplx_conj_q15.obj" "dsplib/src/vector/msp_cmplx_mac_iq31.obj" "dsplib/src/vector/msp_cmplx_mac_q15.obj" "dsplib/src/vector/msp_cmplx_mpy_iq31.obj" "dsplib/src/vector/msp_cmplx_mpy_q15.obj" "dsplib/src/vector/msp_cmplx_mpy_real_iq31.obj" "dsplib/src/vector/msp_cmplx_mpy_real_q15.obj" "dsplib/src/vector/msp_cmplx_scale_iq31.obj" "dsplib/src/vector/msp_cmplx_scale_q15.obj" "dsplib/src/vector/msp_cmplx_shift_iq31.obj" "dsplib/src/vector/msp_cmplx_shift_q15.obj" "dsplib/src/vector/msp_cmplx_sub_iq31.obj" "dsplib/src/vector/msp_cmplx_sub_q15.obj" "dsplib/src/vector/msp_mac_iq31.obj" "dsplib/src/vector/msp_mac_q15.obj" "dsplib/src/vector/msp_max_iq31.obj" "dsplib/src/vector/msp_max_q15.obj" "dsplib/src/vector/msp_max_uq15.obj" "dsplib/src/vector/msp_max_uq31.obj" "dsplib/src/vector/msp_min_iq31.obj" "dsplib/src/vector/msp_min_q15.obj" "dsplib/src/vector/msp_min_uq15.obj" "dsplib/src/vector/msp_min_uq31.obj" "dsplib/src/vector/msp_mpy_iq31.obj" 
+	-$(RM) "dsplib/src/vector/msp_mpy_q15.obj" "dsplib/src/vector/msp_neg_iq31.obj" "dsplib/src/vector/msp_neg_q15.obj" "dsplib/src/vector/msp_offset_iq31.obj" "dsplib/src/vector/msp_offset_q15.obj" "dsplib/src/vector/msp_scale_iq31.obj" "dsplib/src/vector/msp_scale_q15.obj" "dsplib/src/vector/msp_shift_iq31.obj" "dsplib/src/vector/msp_shift_q15.obj" "dsplib/src/vector/msp_sub_iq31.obj" "dsplib/src/vector/msp_sub_q15.obj" "src/interpow.obj" "src/ir.obj" "src/peripherals.obj" 
+	-$(RM) "main_taskified.d" "dsplib/src/filter/msp_biquad_cascade_df1_q15.d" "dsplib/src/filter/msp_biquad_cascade_df2_ext_q15.d" "dsplib/src/filter/msp_biquad_cascade_df2_q15.d" "dsplib/src/filter/msp_biquad_df1_q15.d" "dsplib/src/filter/msp_biquad_df2_ext_q15.d" "dsplib/src/filter/msp_biquad_df2_q15.d" "dsplib/src/filter/msp_cmplx_fir_iq31.d" "dsplib/src/filter/msp_cmplx_fir_q15.d" "dsplib/src/filter/msp_fir_iq31.d" "dsplib/src/filter/msp_fir_q15.d" "dsplib/src/lea/msp_lea_flags.d" "dsplib/src/lea/msp_lea_init.d" "dsplib/src/lea/msp_lea_isr.d" "dsplib/src/lea/msp_lea_patch.d" "dsplib/src/matrix/msp_matrix_abs_iq31.d" "dsplib/src/matrix/msp_matrix_abs_q15.d" "dsplib/src/matrix/msp_matrix_add_iq31.d" "dsplib/src/matrix/msp_matrix_add_q15.d" "dsplib/src/matrix/msp_matrix_mpy_iq31.d" "dsplib/src/matrix/msp_matrix_mpy_q15.d" "dsplib/src/matrix/msp_matrix_neg_iq31.d" "dsplib/src/matrix/msp_matrix_neg_q15.d" "dsplib/src/matrix/msp_matrix_offset_iq31.d" "dsplib/src/matrix/msp_matrix_offset_q15.d" "dsplib/src/matrix/msp_matrix_scale_iq31.d" 
+	-$(RM) "dsplib/src/matrix/msp_matrix_scale_q15.d" "dsplib/src/matrix/msp_matrix_shift_iq31.d" "dsplib/src/matrix/msp_matrix_shift_q15.d" "dsplib/src/matrix/msp_matrix_sub_iq31.d" "dsplib/src/matrix/msp_matrix_sub_q15.d" "dsplib/src/matrix/msp_matrix_trans_iq31.d" "dsplib/src/matrix/msp_matrix_trans_q15.d" "dsplib/src/transform/msp_cmplx_bitrev_iq31.d" "dsplib/src/transform/msp_cmplx_bitrev_q15.d" "dsplib/src/transform/msp_cmplx_fft_auto_q15.d" "dsplib/src/transform/msp_cmplx_fft_fixed_q15.d" "dsplib/src/transform/msp_cmplx_fft_iq31.d" "dsplib/src/transform/msp_cmplx_ifft_auto_q15.d" "dsplib/src/transform/msp_cmplx_ifft_fixed_q15.d" "dsplib/src/transform/msp_cmplx_ifft_iq31.d" "dsplib/src/transform/msp_fft_auto_q15.d" "dsplib/src/transform/msp_fft_fixed_q15.d" "dsplib/src/transform/msp_fft_iq31.d" "dsplib/src/transform/msp_ifft_auto_q15.d" "dsplib/src/transform/msp_ifft_fixed_q15.d" "dsplib/src/transform/msp_ifft_iq31.d" "dsplib/src/transform/msp_split_iq31.d" "dsplib/src/transform/msp_split_q15.d" 
+	-$(RM) "dsplib/src/transform/msp_transform_tables.d" "dsplib/src/utility/msp_cmplx_fill_iq31.d" "dsplib/src/utility/msp_cmplx_fill_q15.d" "dsplib/src/utility/msp_cmplx_iq31.d" "dsplib/src/utility/msp_cmplx_q15.d" "dsplib/src/utility/msp_copy_iq31.d" "dsplib/src/utility/msp_copy_q15.d" "dsplib/src/utility/msp_deinterleave_iq31.d" "dsplib/src/utility/msp_deinterleave_q15.d" "dsplib/src/utility/msp_fill_iq31.d" "dsplib/src/utility/msp_fill_q15.d" "dsplib/src/utility/msp_interleave_iq31.d" "dsplib/src/utility/msp_interleave_q15.d" "dsplib/src/utility/msp_iq31_to_q15.d" "dsplib/src/utility/msp_q15_to_iq31.d" "dsplib/src/utility/msp_sinusoid_q15.d" "dsplib/src/vector/msp_abs_iq31.d" "dsplib/src/vector/msp_abs_q15.d" "dsplib/src/vector/msp_add_iq31.d" "dsplib/src/vector/msp_add_q15.d" "dsplib/src/vector/msp_cmplx_add_iq31.d" "dsplib/src/vector/msp_cmplx_add_q15.d" "dsplib/src/vector/msp_cmplx_conj_iq31.d" "dsplib/src/vector/msp_cmplx_conj_q15.d" "dsplib/src/vector/msp_cmplx_mac_iq31.d" "dsplib/src/vector/msp_cmplx_mac_q15.d" 
+	-$(RM) "dsplib/src/vector/msp_cmplx_mpy_iq31.d" "dsplib/src/vector/msp_cmplx_mpy_q15.d" "dsplib/src/vector/msp_cmplx_mpy_real_iq31.d" "dsplib/src/vector/msp_cmplx_mpy_real_q15.d" "dsplib/src/vector/msp_cmplx_scale_iq31.d" "dsplib/src/vector/msp_cmplx_scale_q15.d" "dsplib/src/vector/msp_cmplx_shift_iq31.d" "dsplib/src/vector/msp_cmplx_shift_q15.d" "dsplib/src/vector/msp_cmplx_sub_iq31.d" "dsplib/src/vector/msp_cmplx_sub_q15.d" "dsplib/src/vector/msp_mac_iq31.d" "dsplib/src/vector/msp_mac_q15.d" "dsplib/src/vector/msp_max_iq31.d" "dsplib/src/vector/msp_max_q15.d" "dsplib/src/vector/msp_max_uq15.d" "dsplib/src/vector/msp_max_uq31.d" "dsplib/src/vector/msp_min_iq31.d" "dsplib/src/vector/msp_min_q15.d" "dsplib/src/vector/msp_min_uq15.d" "dsplib/src/vector/msp_min_uq31.d" "dsplib/src/vector/msp_mpy_iq31.d" "dsplib/src/vector/msp_mpy_q15.d" "dsplib/src/vector/msp_neg_iq31.d" "dsplib/src/vector/msp_neg_q15.d" "dsplib/src/vector/msp_offset_iq31.d" "dsplib/src/vector/msp_offset_q15.d" "dsplib/src/vector/msp_scale_iq31.d" 
+	-$(RM) "dsplib/src/vector/msp_scale_q15.d" "dsplib/src/vector/msp_shift_iq31.d" "dsplib/src/vector/msp_shift_q15.d" "dsplib/src/vector/msp_sub_iq31.d" "dsplib/src/vector/msp_sub_q15.d" "src/interpow.d" "src/ir.d" "src/peripherals.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

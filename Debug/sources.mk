@@ -112,5 +112,11 @@ PDE_DEPS__QUOTED :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 . \
+dsplib/src/filter \
+dsplib/src/lea \
+dsplib/src/matrix \
+dsplib/src/transform \
+dsplib/src/utility \
+dsplib/src/vector \
 src \
 

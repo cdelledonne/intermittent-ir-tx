@@ -232,7 +232,8 @@ void write_field_8(void *f, int8_t *src, uint8_t self, __program_state *ps)
         }
 
         uint16_t d = (t->code << 8) + t->code;
-        ps->curr_task->sf_state ^= d;
+        uint16_t state = ps->curr_task->sf_state ^ d;
+        ps->curr_task->sf_state = state;
     }
 }
 
@@ -264,7 +265,8 @@ void write_field_u8(void *f, uint8_t *src, uint8_t self, __program_state *ps)
         }
 
         uint16_t d = (t->code << 8) + t->code;
-        ps->curr_task->sf_state ^= d;
+        uint16_t state = ps->curr_task->sf_state ^ d;
+        ps->curr_task->sf_state = state;
     }
 }
 
@@ -296,7 +298,8 @@ void write_field_16(void *f, int16_t *src, uint8_t self, __program_state *ps)
         }
 
         uint16_t d = (t->code << 8) + t->code;
-        ps->curr_task->sf_state ^= d;
+        uint16_t state = ps->curr_task->sf_state ^ d;
+        ps->curr_task->sf_state = state;
     }
 }
 
@@ -328,7 +331,8 @@ void write_field_u16(void *f, uint16_t *src, uint8_t self, __program_state *ps)
         }
 
         uint16_t d = (t->code << 8) + t->code;
-        ps->curr_task->sf_state ^= d;
+        uint16_t state = ps->curr_task->sf_state ^ d;
+        ps->curr_task->sf_state = state;
     }
 }
 
@@ -360,7 +364,8 @@ void write_field_32(void *f, int32_t *src, uint8_t self, __program_state *ps)
         }
 
         uint16_t d = (t->code << 8) + t->code;
-        ps->curr_task->sf_state ^= d;
+        uint16_t state = ps->curr_task->sf_state ^ d;
+        ps->curr_task->sf_state = state;
     }
 }
 
@@ -393,7 +398,8 @@ void write_field_u32(void *f, uint32_t *src, uint8_t self, __program_state *ps)
         }
 
         uint16_t d = (t->code << 8) + t->code;
-        ps->curr_task->sf_state ^= d;
+        uint16_t state = ps->curr_task->sf_state ^ d;
+        ps->curr_task->sf_state = state;
     }
 }
 
@@ -425,7 +431,8 @@ void write_field_f32(void *f, float *src, uint8_t self, __program_state *ps)
         }
 
         uint16_t d = (t->code << 8) + t->code;
-        ps->curr_task->sf_state ^= d;
+        uint16_t state = ps->curr_task->sf_state ^ d;
+        ps->curr_task->sf_state = state;
     }
 }
 
@@ -474,23 +481,28 @@ void write_field_element_f32(__field *f, float *src, uint16_t pos)
 
 void start_task(__task *t, __program_state *ps)
 {
-    t->sf_state &= 0xFF;
+    uint16_t state = t->sf_state & 0xFF;
+    t->sf_state = state;
     ps->curr_task = t;
 }
 
 
 void resume_program(__program_state *ps)
 {
+    uint16_t state;
+
     if (ps->curr_task->has_self_channel) {
         uint16_t d_h = (ps->curr_task->sf_state >> 8);
         uint16_t d = (d_h << 8) + d_h;
         if (d_h) {
             ps->curr_task->death_count++;
         }
-        ps->curr_task->sf_state ^= d; // swap-and-clear, atomically executed
+        state = ps->curr_task->sf_state ^ d;
+        ps->curr_task->sf_state = state; // swap-and-clear, atomically executed
     }
 
-    ps->curr_task->sf_state |= 0x8000;
+    state = ps->curr_task->sf_state | 0x8000;
+    ps->curr_task->sf_state = state;
 
     ps->curr_task->task_function();
 }

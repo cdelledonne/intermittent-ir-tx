@@ -76,7 +76,7 @@
 #define SELF_FIELD_CODE_5           0x10
 #define SELF_FIELD_CODE_6           0x20
 #define SELF_FIELD_CODE_7           0x40
-#define SELF_FIELD_CODE_8           0x80 // DO NOT USE
+// #define SELF_FIELD_CODE_8           0x80 // DO NOT USE
 /**
  * @}
  */
@@ -179,7 +179,7 @@ void clear_death_count(__task*);
  *******************************************************************************
  *******************************************************************************
  *
- *  Core macro "functions", use them!
+ *  Internal macros, not for the user.
  *
  *******************************************************************************
  *******************************************************************************
@@ -194,6 +194,18 @@ void clear_death_count(__task*);
 
 #define GetField(S, D, F)           __##S##D##F##__
 
+#define PRAGMA(X)                   _Pragma(#X)
+
+
+/*
+ *******************************************************************************
+ *******************************************************************************
+ *
+ *  Core macros, use them!
+ *
+ *******************************************************************************
+ *******************************************************************************
+ */
 
 /**
  * \ingroup interpow_declaration
@@ -217,6 +229,7 @@ void clear_death_count(__task*);
  * where x = 0, 1.
  */
 #define NewTask(NAME, FN, HAS_SELF_CHANNEL)                                     \
+        PRAGMA(PERSISTENT(NAME))                                                \
         __task NAME = {                                                         \
             .task_function = FN,                                                \
             .has_self_channel = HAS_SELF_CHANNEL,                               \
@@ -245,6 +258,7 @@ void clear_death_count(__task*);
  * Note that the argument of `PERSISTENT` is fixed.
  */
 #define InitialTask(TASK)                                                       \
+        PRAGMA(PERSISTENT(PersState))                                           \
         static __program_state __prog_state = {                                 \
             .curr_task = &TASK,                                                 \
         };
@@ -274,6 +288,7 @@ void clear_death_count(__task*);
    \endverbatim
  */
 #define NewField(SRC, DST, NAME, TYPE, LEN)                                     \
+        PRAGMA(PERSISTENT(PersField(SRC, DST, NAME)))                           \
         TYPE __##SRC##DST##NAME[LEN] = {0};                                     \
         __field __##SRC##DST##NAME##__ = {                                      \
             .length = LEN,                                                      \
@@ -311,6 +326,8 @@ void clear_death_count(__task*);
    \endverbatim
  */
 #define NewSelfField(TASK, NAME, TYPE, LEN, CODE)                               \
+        PRAGMA(PERSISTENT(PersSField0(TASK, NAME)))                             \
+        PRAGMA(PERSISTENT(PersSField1(TASK, NAME)))                             \
         TYPE __##TASK##TASK##NAME##_0[LEN] = {0};                               \
         TYPE __##TASK##TASK##NAME##_1[LEN] = {0};                               \
         __self_field __##TASK##TASK##NAME##__ = {                               \
@@ -955,7 +972,7 @@ void clear_death_count(__task*);
  * @param TASK  task to switch to
  */
 #define StartTask(TASK)                                                         \
-        start_task(&TASK, &__prog_state);
+        start_task(&TASK, &__prog_state)
 
 
 /**
@@ -967,7 +984,7 @@ void clear_death_count(__task*);
  * Resume program from last executing task. Call inside the \e main's loop.
  */
 #define Resume()                                                                \
-        resume_program(&__prog_state);
+        resume_program(&__prog_state)
 
 
 /**
@@ -983,7 +1000,7 @@ void clear_death_count(__task*);
  * @return TASK's death count
  */
 #define GetDeathCount(TASK)                                                     \
-        get_death_count(&TASK);
+        get_death_count(&TASK)
 
 
 /**
@@ -997,7 +1014,7 @@ void clear_death_count(__task*);
  * @param TASK  task whose death count has to be cleared
  */
 #define ClearDeathCount(TASK)                                                   \
-        clear_death_count(&TASK);
+        clear_death_count(&TASK)
 
 
 #endif /* INC_INTERPOW_H_ */
